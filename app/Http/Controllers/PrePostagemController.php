@@ -72,7 +72,7 @@ public function index(Request $request)
         $query->where('name_recipient', 'like', '%' . $searchTerm . '%');
     }
 
-    $prepostagens = $query->paginate(50);
+    $prepostagens = $query->paginate(10);
 
     Log::info('Listar as Pré-Postagem.', ['action_user_id' => Auth::id()]);
 
@@ -95,7 +95,7 @@ public function canceled(Request $request)
         $query->where('name_recipient', 'like', '%' . $searchTerm . '%');
     }
 
-    $prepostagens = $query->paginate(50);
+    $prepostagens = $query->paginate(10);
 
     // Salvar log
     Log::info('Listar as Pré-Postagem canceladas.', ['action_user_id' => Auth::id()]);
@@ -120,7 +120,7 @@ public function posted(Request $request)
         $query->where('name_recipient', 'like', '%' . $searchTerm . '%');
     }
 
-    $prepostagens = $query->paginate(50);
+    $prepostagens = $query->paginate(10);
 
     // Salvar log
     Log::info('Listar as Pré-Postagem postadas.', ['action_user_id' => Auth::id()]);
@@ -257,6 +257,7 @@ public function store(PrePostagemRequest $request)
             'diameter_informed' => $request->diameter_informed,
             'aware_object_not_forbidden' => '1',
             'payment_method' => '2',
+            'observation' => $request->observation ?? '',
             'situation' => 1
         ]);
 

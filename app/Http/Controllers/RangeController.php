@@ -104,7 +104,7 @@ class RangeController extends Controller
                 $tipoPostal = $dados['tipoPostal']; // Exemplo: "AC"
                 $nuEtiquetaInicial = intval($dados['nuEtiquetaInicial']); // Exemplo: 95024522
                 $nuEtiquetaFinal = intval($dados['nuEtiquetaFinal']); // Exemplo: 95025021
-
+                
                 // Loop para salvar as etiquetas no banco, já calculando o dígito verificador
                 for ($i = $nuEtiquetaInicial; $i <= $nuEtiquetaFinal; $i++) {
                     $sequencial = str_pad($i, 8, '0', STR_PAD_LEFT); // garante 8 dígitos com zeros à esquerda

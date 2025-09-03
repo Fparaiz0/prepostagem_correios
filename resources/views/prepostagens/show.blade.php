@@ -250,6 +250,10 @@
                             <p class="text-gray-500 font-medium">Atualizado em:</p>
                             <p class="col-span-2">{{ \Carbon\Carbon::parse($prepostagem->updated_at)->format('d/m/Y H:i') }}</p>
                         </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <p class="text-gray-500 font-medium">Observação:</p>
+                            <p class="col-span-2 break-all whitespace-normal text-sm">{{ $prepostagem->observation ?: 'Não informada' }}</p>
+                        </div>
                     </div>
                 </div>
             </div>

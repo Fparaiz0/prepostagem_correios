@@ -83,12 +83,11 @@
             @endif
         </div>
 
-        <!-- Pagination -->
-        @if ($tracks->hasPages())
-            <div class="bg-gray-50 px-6 py-4 border-t border-gray-200">
+        <!-- Paginação Estilizada -->
+        @if($tracks->hasPages())
+            <div class="mt-8 border-t border-gray-200 pt-6">
                 <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-                    <!-- Results Info -->
-                    <div class="text-sm text-gray-600">
+                    <div class="text-sm text-gray-700">
                         Mostrando
                         <span class="font-medium">{{ $tracks->firstItem() }}</span>
                         a
@@ -97,35 +96,51 @@
                         <span class="font-medium">{{ $tracks->total() }}</span>
                         resultados
                     </div>
-
-                    <!-- Navigation -->
-                    <nav class="flex items-center space-x-1">
-                        {{-- Previous Button --}}
+                    
+                    <div class="flex items-center space-x-1">
+                        {{-- Botão Anterior --}}
                         @if ($tracks->onFirstPage())
-                            <span class="px-3 py-1 border rounded-md text-gray-400 cursor-not-allowed">&laquo;</span>
+                            <span class="px-3 py-2 border border-gray-300 rounded-lg text-gray-400 cursor-not-allowed text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </span>
                         @else
-                            <a href="{{ $tracks->previousPageUrl() }}"
-                               class="px-3 py-1 border rounded-md bg-white text-gray-700 hover:bg-gray-50 transition-colors">&laquo;</a>
+                            <a href="{{ $tracks->previousPageUrl() }}" class="px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 transition-colors text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </a>
                         @endif
 
-                        {{-- Page Numbers --}}
-                        @foreach ($tracks->getUrlRange(1, $tracks->lastPage()) as $page => $url)
+                        {{-- Links de Página --}}
+                        @foreach ($tracks->getUrlRange(max(1, $tracks->currentPage() - 2), min($tracks->lastPage(), $tracks->currentPage() + 2)) as $page => $url)
                             @if ($page == $tracks->currentPage())
-                                <span class="px-3 py-1 border rounded-md bg-blue-600 text-white font-medium">{{ $page }}</span>
+                                <span class="px-3 py-2 border border-blue-500 bg-blue-50 text-blue-600 font-medium rounded-lg text-sm">
+                                    {{ $page }}
+                                </span>
                             @else
-                                <a href="{{ $url }}"
-                                   class="px-3 py-1 border rounded-md bg-white text-gray-700 hover:bg-gray-50 transition-colors">{{ $page }}</a>
+                                <a href="{{ $url }}" class="px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 transition-colors text-sm">
+                                    {{ $page }}
+                                </a>
                             @endif
                         @endforeach
 
-                        {{-- Next Button --}}
+                        {{-- Botão Próximo --}}
                         @if ($tracks->hasMorePages())
-                            <a href="{{ $tracks->nextPageUrl() }}"
-                               class="px-3 py-1 border rounded-md bg-white text-gray-700 hover:bg-gray-50 transition-colors">&raquo;</a>
+                            <a href="{{ $tracks->nextPageUrl() }}" class="px-3 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 hover:bg-gray-50 transition-colors text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </a>
                         @else
-                            <span class="px-3 py-1 border rounded-md text-gray-400 cursor-not-allowed">&raquo;</span>
+                            <span class="px-3 py-2 border border-gray-300 rounded-lg text-gray-400 cursor-not-allowed text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </span>
                         @endif
-                    </nav>
+                    </div>
                 </div>
             </div>
         @endif

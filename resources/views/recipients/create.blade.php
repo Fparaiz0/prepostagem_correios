@@ -132,7 +132,7 @@
         </form>
     </div>
 
-     <script>
+   <script>
     document.addEventListener('DOMContentLoaded', function() {
         const cepInput = document.getElementById('cep');
         const ufInput = document.getElementById('uf');

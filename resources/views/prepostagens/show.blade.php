@@ -82,10 +82,10 @@
             <!-- Seção Remetente -->
             @switch($prepostagem->situation)
                 @case(1)
-            <div class="bg-gray-50 rounded-lg p-5 border border-blue-200">
+            <div class="bg-gray-50 rounded-lg p-5 border border-blue-300">
                 @break
                 @case(2)
-            <div class="bg-gray-50 rounded-lg p-5 border border-red-200">
+            <div class="bg-gray-50 rounded-lg p-5 border border-red-300">
                 @break
                 @case(3)
             <div class="bg-gray-50 rounded-lg p-5 border border-green-300">
@@ -222,7 +222,7 @@
                             <p class="text-gray-500 font-medium">Dimensões:</p>
                             <p class="col-span-2">
                                 {{ $prepostagem->height_informed }}cm (A) × 
-                                {{ $prepostagem->width_informed }}cm (L) × 
+                                {{ $prepostagem->width_informed }}cm (L) ×
                                 {{ $prepostagem->length_informed }}cm (C)
                                 @if($prepostagem->diameter_informed)
                                     × {{ $prepostagem->diameter_informed }}cm (D)

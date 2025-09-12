@@ -108,6 +108,10 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
                         </div>
+                        {{-- Exibe NF embaixo --}}
+                        @if ($range->invoice)
+                                <div class="text-xs text-gray-600 mt-1">NF: {{ $range->invoice }}</div>
+                        @endif
                         <p class="text-xs text-gray-500 mt-1">
                             Utilizada em: {{ $range->updated_at->format('d/m/Y') }}
                         </p>

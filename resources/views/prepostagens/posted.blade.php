@@ -44,7 +44,7 @@
         <x-alert />
     </div>
 
-    <!-- Formulário de Pesquisa -->
+    <!-- Formulário de Pesquisa Simplificado -->
     <div class="bg-white rounded-xl shadow-sm border border-green-300 p-6 mb-6">
         <div class="flex items-center justify-between mb-4">
             <h3 class="text-lg font-semibold text-gray-800">Pesquisar Pré-Postagens Postadas</h3>

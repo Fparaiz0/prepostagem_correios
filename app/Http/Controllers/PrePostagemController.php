@@ -292,6 +292,9 @@ public function store(PrePostagemRequest $request)
 
             if (!$response->successful()) {
                 Log::warning('Erro ao cancelar pré-postagem na API dos Correios.', [
+                    'prepostagem_id' => $prepostagem->id,
+                    'action_user_id' => Auth::id(), 
+                    $response
                 ]);
 
                 return back()->with('error', 'Erro ao cancelar a pré-postagem na API dos Correios.');
